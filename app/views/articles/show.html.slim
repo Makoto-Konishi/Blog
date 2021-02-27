@@ -1,2 +1,13 @@
-h1 Articles#show
-p Find me in app/views/articles/show.html.slim
+h1 記事詳細
+.nav.justify-content-end
+  = link_to '一覧', articles_path, class: 'nav-link'
+table.table.table-hover
+  tbody
+    tr
+      th= Article.human_attribute_name :title
+      td= @article.title
+    tr
+      th= Article.human_attribute_name :created_at
+      td= @article.created_at
+
+
