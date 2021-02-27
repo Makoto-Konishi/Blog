@@ -1,2 +1,18 @@
-h1 Articles#index
-p Find me in app/views/articles/index.html.slim
+h1 ブログ記事一覧
+= link_to '新規投稿', new_article_path 
+
+.mb-3
+table.table.table-hover
+  thead.thead-default
+    tr
+      th= Article.human_attribute_name :title
+      th= Article.human_attribute_name :created_at
+    tbody
+    - @articles.each do |article|
+      tr
+        td= link_to article.title, article
+        td= article.created_at
+
+
+
+
