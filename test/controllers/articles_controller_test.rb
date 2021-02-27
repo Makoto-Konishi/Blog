@@ -6,13 +6,13 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get new" do
-    get articles_new_url
+  test "should get create" do
+    get articles_create_url
     assert_response :success
   end
 
-  test "should get create" do
-    get articles_create_url
+  test "should get new" do
+    get articles_new_url
     assert_response :success
   end
 
