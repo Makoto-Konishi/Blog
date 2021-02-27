@@ -7,11 +7,14 @@ table.table.table-hover
     tr
       th= Article.human_attribute_name :title
       th= Article.human_attribute_name :created_at
+      th
     tbody
     - @articles.each do |article|
       tr
         td= link_to article.title, article
         td= article.created_at
+        td
+          = link_to '編集', edit_article_path(article), class: 'btn btn-primary mr-3'
 
 
 

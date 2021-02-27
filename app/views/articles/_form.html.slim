@@ -1,0 +1,9 @@
+
+
+= form_with model: article, local: true do |f|
+  .form-group
+    = f.label :title, 'タイトル'
+    = f.text_field :title, class: 'form-control'
+    = f.label :text, '本文'
+    = f.text_area :text, class: 'form-control', size: '20x5'
+  = f.submit nil, class: 'btn btn-secondary'
