@@ -9,5 +9,10 @@ table.table.table-hover
     tr
       th= Article.human_attribute_name :created_at
       td= @article.created_at
+    tr
+      th
+      td
+        = link_to '編集', edit_article_path(@article), class: 'btn btn-primary mr-3'
+        = link_to '削除', @article, method: :delete, class: 'btn btn-danger'
 
 
