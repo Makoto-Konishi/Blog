@@ -1,5 +1,7 @@
 h1 ブログ記事一覧
-= link_to '新規投稿', new_article_path 
+= link_to '新規投稿', new_article_path
+br
+= link_to 'ユーザー一覧', users_path 
 
 .mb-3
 table.table.table-hover
@@ -7,15 +9,18 @@ table.table.table-hover
     tr
       th= Article.human_attribute_name :title
       th= Article.human_attribute_name :created_at
+      th= User.human_attribute_name :name
       th
     tbody
     - @articles.each do |article|
       tr
         td= link_to article.title, article
         td= article.created_at
+        td= article.user.name
         td
-          = link_to '編集', edit_article_path(article), class: 'btn btn-primary mr-3'
-          = link_to '削除', article, method: :delete, class: 'btn btn-danger'
+          - if article.user_id == current_user.id
+            = link_to '編集', edit_article_path(article), class: 'btn btn-primary'
+            = link_to '削除', article, method: :delete, class: 'btn btn-danger'
 
 
 
