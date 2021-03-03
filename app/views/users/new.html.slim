@@ -1,10 +1,12 @@
 h1 ユーザー登録
 
 - if @user.errors.present?
-  ul#error_explanation
-    - @user.errors.full_messages.each do |message|
-      li = message
+  div#error_explanation.alert.alert-danger 
+    ul
+      - @user.errors.full_messages.each do |message|
+        li = message
 
+= link_to 'ログイン', login_path, class: 'btn btn-primary'
 = form_with model: @user, local: true do |f|
   .form_group
     = f.label :name, '名前'
@@ -21,5 +23,5 @@ h1 ユーザー登録
   .form-group
     = f.label :password_confirmation, 'パスワード（確認）'
     = f.password_field :password_confirmation, class: 'form-control'
-  = f.submit '登録する', class: 'btn btn-primary'
+  = f.submit '登録する', class: 'btn btn-success'
 

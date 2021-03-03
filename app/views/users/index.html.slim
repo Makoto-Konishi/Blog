@@ -1,3 +1,16 @@
-h1 index
-= link_to 'ユーザー登録', new_user_path, class: 'btn btn-primary'
+h1 ユーザー一覧
+
+.mb-3
+table.table.table-hover
+  thead.thead-default
+    tr
+      th= User.human_attribute_name :name
+      th= User.human_attribute_name :age
+    tbody    
+    - @users.each do |user|
+      tr
+        td= link_to user.name, user
+        td= user.age
+
+
 
