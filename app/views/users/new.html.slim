@@ -1,12 +1,10 @@
-h1 ユーザー登録
-
+h1 Sign Up 
 - if @user.errors.present?
   div#error_explanation.alert.alert-danger 
     ul
       - @user.errors.full_messages.each do |message|
         li = message
-
-= link_to 'ログイン', login_path, class: 'btn btn-primary'
+= link_to 'ログイン', login_path
 = form_with model: @user, local: true do |f|
   .form_group
     = f.label :name, '名前'

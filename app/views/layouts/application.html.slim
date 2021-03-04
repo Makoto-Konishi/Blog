@@ -13,11 +13,11 @@ html
 
       ul.navbar-nav.ml-auto
         - if current_user
-          li.nav-item= link_to 'ログアウト', logout_path, method: :delete
-          li.nav-item= link_to 'ログイン', login_path
-          li.nav-item= link_to 'Sign Up', signup_path
+          li.nav-item =link_to 'ログアウト', logout_path, method: :delete
+          li.nav-item =link_to 'ログイン', login_path
+          li.nav-item =link_to 'Sign Up', signup_path
     .container
-      - if flash.notice.present?
-        .alert.alert-success = flash.notice
+      - if flash.notice||alert.present?
+        .alert.alert-success =flash.notice||alert
     br
   = yield

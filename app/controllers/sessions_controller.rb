@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
   skip_before_action :login_required
   def new
+    @user = User.new
   end
 
   def create
@@ -10,6 +11,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to root_url, notice: 'ログインに成功しました'
     else
+      flash.now[:alert] = "メールアドレスもしくはパスワードが正しくありません"
       render :new
     end
   end
