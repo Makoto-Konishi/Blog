@@ -1,0 +1,14 @@
+h1 ユーザー詳細
+= link_to 'ユーザー一覧', users_path
+
+table.table.table-hover
+  tbody
+    tr
+      th = User.human_attribute_name(:name)
+      td = @user.name
+    tr
+      th = User.human_attribute_name(:age)
+      td = @user.age
+    tr 
+      th= User.human_attribute_name :id
+      td= @user.id
