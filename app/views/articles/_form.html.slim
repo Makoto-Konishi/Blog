@@ -10,4 +10,5 @@
     = f.text_field :title, class: 'form-control'
     = f.label :text, '本文'
     = f.text_area :text, class: 'form-control', size: '20x5'
+    = f.select :status, Article.statuses.keys.map {|k| [t("status.article.#{k}"), k]}
   = f.submit nil, class: 'btn btn-secondary'
