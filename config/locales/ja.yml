@@ -18,7 +18,12 @@ ja:
     updated_at: 更新日時
     password: パスワード
     password_confirmation: パスワード（確認）
-    email: メールアドレス
+    email: メールアドレス 
+    status: 状態
+  status:
+    article:
+      unpublished: 非公開
+      published: 公開
   date:
     abbr_day_names:
     - 日
