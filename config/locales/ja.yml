@@ -19,6 +19,7 @@ ja:
     password: パスワード
     password_confirmation: パスワード（確認）
     email: メールアドレス 
+    status: 状態
   status:
     article:
       unpublished: 非公開

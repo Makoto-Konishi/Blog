@@ -3,7 +3,8 @@ class ArticlesController < ApplicationController
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
   def index
-    @articles = Article.all
+      @articles = Article.select('articles.*').where.not(status: 'unpublished')
+      @unpublishes = Article.joins(:user).select('articles.*').where(users: {id: session[:user_id]}).where(status: 'unpublished')
   end
 
   def new
@@ -13,7 +14,7 @@ class ArticlesController < ApplicationController
   def create
     @article = current_user.articles.new(article_params)
     if @article.save
-      redirect_to articles_url, notice:"#{@article.title}を投稿しました"
+      redirect_to articles_url, notice:"「#{@article.title}」を投稿しました"
     else
       render :new
     end
@@ -27,7 +28,7 @@ class ArticlesController < ApplicationController
 
   def update
     @article.update!(article_params)
-    redirect_to articles_url, notice: "#{@article.title}」を更新しました。"
+    redirect_to articles_url, notice: "「#{@article.title}」を更新しました。"
   end
 
   def destroy

@@ -10,17 +10,33 @@ table.table.table-hover
       th= Article.human_attribute_name :title
       th= Article.human_attribute_name :created_at
       th= User.human_attribute_name :name
+      th= Article.human_attribute_name :status
       th
-    tbody
+    tbody    
     - @articles.each do |article|
       tr
         td= link_to article.title, article
         td= article.created_at
         td= article.user.name
         td
+          - if article.published?
+            = t("status.article.published")
+          - else
+            = t("status.article.unpublished")
+        td
           - if article.user_id == current_user.id
             = link_to '編集', edit_article_path(article), class: 'btn btn-primary'
             = link_to '削除', article, method: :delete, class: 'btn btn-danger'
+    - @unpublishes.each do |unpublish|
+      td= link_to unpublish.title, unpublish 
+      td= unpublish.created_at
+      td= unpublish.user.name
+      td
+        - if unpublish.unpublished?
+          = t("status.article.unpublished")
+      td
+          = link_to '編集', edit_article_path(unpublish), class: 'btn btn-primary'
+          = link_to '削除', unpublish, method: :delete, class: 'btn btn-danger'
 
 
 
